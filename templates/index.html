@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedyMart</title>
+</head>
+<body>
+    <h1>Welcome to SpeedyMart</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody id="productTable">
+            <!-- Table body will be populated dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        function populateTable(products) {
+            var tbody = document.getElementById("productTable");
+            products.forEach(product => {
+                var row = document.createElement("tr");
+                row.innerHTML = `<td>${product.id}</td><td>${product.name}</td><td>${product.price}</td><td>${product.stock}</td>`;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+    <a href="order">Order the Items</a>
+</body>
+</html>

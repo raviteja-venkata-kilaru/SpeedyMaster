@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form id="productForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="price">Price:</label><br>
+        <input type="text" id="price" name="price"><br><br>
+        <label for="stock">Stock</label><br>
+        <input type="text" id="stock" name="stock"><br><br>
+        <button type="submit">Save Product</button>
+    </form>
+
+    <script>
+        document.getElementById("productForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var price = document.getElementById("price").value;
+            var stock = document.getElementById("stock").value;
+            fetch('/api/createProducts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    price: price,
+                    stock:stock
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                document.getElementById("productForm").reset();
+            })
+            .catch(error => console.error('Error saving product:', error));
+        });
+    </script>
+</body>
+</html>
