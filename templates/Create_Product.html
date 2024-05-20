@@ -39,7 +39,10 @@
                 alert(data.message);
                 document.getElementById("productForm").reset();
             })
-            .catch(error => console.error('Error saving product:', error));
+            .catch(error => {
+                alert(data.message);
+                document.getElementById("productForm").reset();
+            });
         });
     </script>
 </body>

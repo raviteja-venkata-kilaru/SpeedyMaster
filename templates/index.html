@@ -23,6 +23,7 @@
 
     <script>
         function populateTable(products) {
+            console.log(products)
             var tbody = document.getElementById("productTable");
             products.forEach(product => {
                 var row = document.createElement("tr");
@@ -31,6 +32,6 @@
             });
         }
     </script>
-    <a href="order">Order the Items</a>
+    <a href="order">Place New Order</a>
 </body>
 </html>
